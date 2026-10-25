@@ -1,0 +1,18 @@
+--solve 1
+SELECT Makes.Make,NumberOfVehicles = Count(*),TotalVehicles=(select count(*) from VehicleDetails)
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+WHERE (VehicleDetails.Year BETWEEN 1950 AND 2000)
+GROUP BY Makes.Make
+ORDER BY NumberOfVehicles desc
+
+--solve 2
+
+SELECT 
+Makes.Make,NumberOfVehicles = (SELECT COUNT(*) FROM VehicleDetails AS in_VehicleDetails WHERE in_VehicleDetails.MakeID = VehicleDetails.MakeID AND in_VehicleDetails.Year BETWEEN 1950 AND 2000),TotalVehicles = (SELECT COUNT(*) FROM VehicleDetails WHERE Year BETWEEN 1950 AND 2000)
+FROM VehicleDetails
+INNER JOIN Makes ON VehicleDetails.MakeID = Makes.MakeID
+WHERE VehicleDetails.Year BETWEEN 1950 AND 2000
+GROUP BY Makes.Make, VehicleDetails.MakeID
+ORDER BY NumberOfVehicles DESC;

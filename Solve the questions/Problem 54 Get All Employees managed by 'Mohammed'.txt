@@ -1,0 +1,18 @@
+
+SELECT        Employees.Name, Employees.ManagerID, Employees.Salary, Managers.Name AS ManagerName
+FROM            Employees left JOIN
+                         Employees AS Managers ON Employees.ManagerID = Managers.EmployeeID
+						 where Managers.ManagerID is null and  Managers.Name is not null
+
+--Another solution
+
+SELECT        Employees.Name, Employees.ManagerID, Employees.Salary, Managers.Name AS ManagerName
+FROM            Employees left JOIN
+                         Employees AS Managers ON Employees.ManagerID = Managers.EmployeeID
+						 where Managers.Name = 'Mohammed'
+--Another solution
+
+SELECT        Employees.Name, Employees.ManagerID, Employees.Salary, Managers.Name AS ManagerName
+FROM            Employees left JOIN
+                         Employees AS Managers ON Employees.ManagerID = Managers.EmployeeID
+						 where Employees.ManagerID = 1

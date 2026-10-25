@@ -1,0 +1,4 @@
+select  (TotalWithNoSpecifiedDoors * 100.0 /NULLIF(TotalVehicles, 0) ) AS PercentageValue from (
+select count(*) as TotalWithNoSpecifiedDoors ,TotalVehicles=(select count(*) from VehicleDetails ) from VehicleDetails
+where VehicleDetails.NumDoors is  null
+) R1

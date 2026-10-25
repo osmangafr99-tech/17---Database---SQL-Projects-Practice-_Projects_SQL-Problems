@@ -1,0 +1,18 @@
+select DISTINCT VehicleDetails.Vehicle_Display_Name , VehicleDetails.NumDoors, doorsdescription =
+CASE
+    WHEN VehicleDetails.NumDoors = 0 THEN 'Zero Doors'
+    WHEN VehicleDetails.NumDoors = 1 THEN 'One Doors'
+    WHEN VehicleDetails.NumDoors = 2 THEN 'Tow Doors'
+    WHEN VehicleDetails.NumDoors = 3 THEN 'three Doors'
+    WHEN VehicleDetails.NumDoors = 4 THEN 'Four Doors'
+    WHEN VehicleDetails.NumDoors = 5 THEN 'five Doors'
+	WHEN VehicleDetails.NumDoors = 6 THEN 'Six Doors'
+    WHEN VehicleDetails.NumDoors = 8 THEN 'Eight Doors'
+	WHEN VehicleDetails.NumDoors is null  THEN 'Not Set'
+    ELSE 'Unknown'
+END
+from VehicleDetails
+
+
+select DISTINCT VehicleDetails.NumDoors from VehicleDetails
+order by VehicleDetails.NumDoors

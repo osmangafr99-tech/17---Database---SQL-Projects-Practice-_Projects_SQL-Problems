@@ -1,0 +1,8 @@
+SELECT Distinct Makes.Make, DriveTypes.DriveTypeName,count(*) as koko
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID 
+INNER JOIN
+DriveTypes ON VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID
+group by Makes.Make, DriveTypes.DriveTypeName
+order by Makes.Make asc ,koko desc

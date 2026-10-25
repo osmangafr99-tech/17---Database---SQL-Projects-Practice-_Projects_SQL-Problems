@@ -1,0 +1,3 @@
+select * from VehicleDetails
+WHERE VehicleDetails.Year BETWEEN 1950 AND 2000
+order by VehicleDetails.Year;

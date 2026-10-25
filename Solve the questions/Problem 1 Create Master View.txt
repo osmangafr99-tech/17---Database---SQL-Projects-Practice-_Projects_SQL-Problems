@@ -1,0 +1,20 @@
+create view My_VehicleMasterDetails_2 as
+SELECT  VehicleDetails.ID, Makes.MakeID, Makes.Make, MakeModels.ModelID, MakeModels.ModelName, SubModels.SubModelID, SubModels.SubModelName, Bodies.BodyID, Bodies.BodyName, 
+VehicleDetails.Vehicle_Display_Name, VehicleDetails.Year, DriveTypes.DriveTypeID, DriveTypes.DriveTypeName, VehicleDetails.Engine, VehicleDetails.Engine_CC, VehicleDetails.Engine_Cylinders, 
+ VehicleDetails.Engine_Liter_Display, FuelTypes.FuelTypeID, FuelTypes.FuelTypeName, VehicleDetails.NumDoors
+FROM VehicleDetails 
+INNER JOIN
+SubModels ON VehicleDetails.SubModelID = SubModels.SubModelID 
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+INNER JOIN
+MakeModels ON VehicleDetails.ModelID = MakeModels.ModelID AND SubModels.ModelID = MakeModels.ModelID AND Makes.MakeID = MakeModels.MakeID 
+INNER JOIN
+FuelTypes ON VehicleDetails.FuelTypeID = FuelTypes.FuelTypeID 
+INNER JOIN
+DriveTypes ON VehicleDetails.DriveTypeID = DriveTypes.DriveTypeID 
+INNER JOIN
+Bodies ON VehicleDetails.BodyID = Bodies.BodyID
+
+select * from VehicleMasterDetails 
+select * from My_VehicleMasterDetails_2 

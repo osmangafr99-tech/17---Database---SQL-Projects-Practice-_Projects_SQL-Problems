@@ -1,0 +1,5 @@
+SELECT Employees.Name, Employees.ManagerID, Employees.Salary, case  WHEN Employees.ManagerID is null  THEN Employees.Name else Managers.Name   end  AS ManagerName
+FROM Employees 
+left JOIN
+Employees AS Managers ON Employees.ManagerID = Managers.EmployeeID
+

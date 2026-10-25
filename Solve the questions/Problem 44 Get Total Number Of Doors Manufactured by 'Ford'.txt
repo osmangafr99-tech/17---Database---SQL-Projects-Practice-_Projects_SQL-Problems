@@ -1,0 +1,15 @@
+SELECT sum(VehicleDetails.NumDoors) as TotalNumberOfDoors, Makes.Make
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+where Makes.Make = 'Ford'
+group by  Makes.Make
+ 
+--Another solution
+
+SELECT        Makes.Make, Sum(VehicleDetails.NumDoors) AS TotalNumberOfDoors
+FROM            VehicleDetails INNER JOIN
+                         Makes ON VehicleDetails.MakeID = Makes.MakeID
+
+Group By Make
+Having Make='Ford'

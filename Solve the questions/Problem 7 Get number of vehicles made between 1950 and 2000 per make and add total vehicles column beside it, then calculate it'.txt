@@ -1,0 +1,11 @@
+select NumberOfVehicles,TotalVehicles, (NumberOfVehicles * 100.0 /NULLIF(TotalVehicles, 0) ) AS PercentageValue from (
+SELECT Makes.Make,NumberOfVehicles = Count(*),TotalVehicles=(select count(*) from VehicleDetails)
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+WHERE (VehicleDetails.Year BETWEEN 1950 AND 2000)
+GROUP BY Makes.Make
+) R1
+ORDER BY NumberOfVehicles desc
+
+

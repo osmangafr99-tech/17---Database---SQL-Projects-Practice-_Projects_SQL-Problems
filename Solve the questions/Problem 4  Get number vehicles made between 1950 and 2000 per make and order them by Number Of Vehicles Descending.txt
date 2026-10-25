@@ -1,0 +1,13 @@
+select My_VehicleMasterDetails_2.Make ,NumberOfVehicles = Count(*) from My_VehicleMasterDetails_2
+WHERE My_VehicleMasterDetails_2.Year BETWEEN 1950 AND 2000
+GROUP BY My_VehicleMasterDetails_2.Make
+ORDER BY NumberOfVehicles desc
+-----------------------------------------------
+--Another solution
+SELECT Makes.Make,NumberOfVehicles = Count(*) 
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+WHERE VehicleDetails.Year BETWEEN 1950 AND 2000
+GROUP BY Makes.Make
+ORDER BY NumberOfVehicles desc

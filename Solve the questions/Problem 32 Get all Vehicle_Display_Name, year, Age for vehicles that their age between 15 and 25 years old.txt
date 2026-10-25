@@ -1,0 +1,14 @@
+select  VehicleDetails.Vehicle_Display_Name,VehicleDetails.Year,calculatetheage = YEAR(GETDATE()) - VehicleDetails.Year
+from VehicleDetails
+where YEAR(GETDATE()) - VehicleDetails.Year Between 15 and 25
+order by calculatetheage 
+
+--Another solution
+
+select * from
+( 
+	Select VehicleDetails.Vehicle_Display_Name, Year, Age= YEAR(GetDate()) - VehicleDetails.year
+	from VehicleDetails
+) R1
+
+Where Age between 15 and 25

@@ -1,0 +1,20 @@
+--solve 1
+SELECT Makes.Make, FuelTypes.FuelTypeName,NumberOfVehicles=count(FuelTypes.FuelTypeID)
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+INNER JOIN
+FuelTypes ON VehicleDetails.FuelTypeID = FuelTypes.FuelTypeID
+WHERE (VehicleDetails.Year BETWEEN 1950 AND 2000)
+GROUP BY Makes.Make, FuelTypes.FuelTypeName
+ORDER BY Makes.Make;
+--- solve 2
+SELECT Makes.Make, FuelTypes.FuelTypeName,NumberOfVehicles=count(*)
+FROM VehicleDetails
+INNER JOIN
+Makes ON VehicleDetails.MakeID = Makes.MakeID
+INNER JOIN
+FuelTypes ON VehicleDetails.FuelTypeID = FuelTypes.FuelTypeID
+WHERE (VehicleDetails.Year BETWEEN 1950 AND 2000)
+GROUP BY Makes.Make, FuelTypes.FuelTypeName
+ORDER BY Makes.Make;
